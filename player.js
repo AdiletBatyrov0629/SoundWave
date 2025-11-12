@@ -2,7 +2,7 @@
 // Register your app at developer.spotify.com/dashboard
 // Set REDIRECT_URI to the HTTPS page where this is hosted, e.g. https://username.github.io/repo/
 const CLIENT_ID = "36b771785afb424086e92d9dceb4f262";
-const REDIRECT_URI = "YOUR_REDIRECT_URI"; // <-- Replace with your deployed app URL!
+const REDIRECT_URI = "https://adiletbatyrov0629.github.io/SoundWave/"; // <-- Replace with your deployed app URL!
 const SCOPES = "";
 function getHashParams() {
     const hash = window.location.hash.substring(1);
@@ -219,4 +219,5 @@ const app = {
 };
 window.app = app; // so event handlers work
 app.init();
+
 }
