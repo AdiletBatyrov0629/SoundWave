@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="#1db954" stroke-width="2">
+            <path d="M9 18V5l12-2v13M9 13l12-2"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <svg class="nav-icon active" data-view="home" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <svg class="nav-icon" data-view="collection" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/>
+        </svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="search-bar">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" placeholder="Search" id="searchInput">
+            </div>
+        </div>
+
+        <div id="homeView">
+            <div class="hero">
+                <div class="featured-playlist">
+                    <div class="featured-content">
+                        <div class="playlist-label">Curated Spotify Playlist</div>
+                        <h1 class="playlist-title">Top Hits</h1>
+                        <p class="playlist-description">The best tracks from Spotify. Updated daily with fresh music.</p>
+                        <div class="playlist-stats">
+                            <div class="likes">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span>Spotify Charts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-charts">
+                    <h2 class="section-title">Top charts</h2>
+                    <div id="topCharts">
+                        <div class="loading">Loading top charts...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-releases">
+                <h2 class="section-title">New releases.</h2>
+                <div class="albums-grid" id="albumsGrid">
+                    <div class="loading">Loading albums...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="playlistView" class="playlist-view">
+            <div class="playlist-header">
+                <img class="playlist-cover" id="playlistCover" src="" alt="">
+                <div class="playlist-details">
+                    <h1 id="playlistTitle"></h1>
+                    <p class="playlist-meta" id="playlistMeta"></p>
+                </div>
+            </div>
+            <div class="song-list" id="songList"></div>
+        </div>
+
+        <div id="collectionView" class="collection-view">
+            <h2 class="section-title">My Collection</h2>
+            <div class="collection-tabs">
+                <button class="tab-btn active" onclick="app.switchTab('collection')">My collection</button>
+                <button class="tab-btn" onclick="app.switchTab('likes')">Likes</button>
+            </div>
+            <div class="collection-grid" id="collectionGrid">
+                <div class="loading">Your liked albums will appear here.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <div class="player-track">
+            <img id="playerCover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23333'/%3E%3C/svg%3E" alt="">
+            <div class="track-info">
+                <h4 id="playerTitle">Select a track</h4>
+                <p id="playerArtist">Artist</p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="control-btn play-btn" onclick="app.togglePlay()">
+                    <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <audio id="audioPlayer"></audio>
+    <script src="player.js"></script>
+</body>
+</html>
